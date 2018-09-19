@@ -13,9 +13,10 @@ def load_img_w_specific_setting(flag):
         print('load setting is ', flag)
         print('width: %d height: %d channel: %d' % (width, height, channel) )
         print('depth info: ', img.dtype)
-        cv.imshow(str(flag), img)
+        # cv.imshow(str(flag), img)
+        cv.imwrite(str(flag)+'.png',img)
 
-    img = cv.imread('img.png', flag)                # load an image in the same folder w/ the script
+    img = cv.imread('raw.png', flag)                # load an image in the same folder w/ the script
                                                     # cv2.imread(filename[, flags]) → retval
     display_info_of_loaded_img(img)
                                                     
@@ -26,8 +27,8 @@ load_img_w_specific_setting(cv.IMREAD_ANYDEPTH)
 load_img_w_specific_setting(cv.IMREAD_ANYCOLOR)
 load_img_w_specific_setting(cv.IMREAD_ANYCOLOR | cv.IMREAD_ANYDEPTH)
 
-cv.waitKey(0)                                       # hold the created windows
-cv.destroyAllWindows()                              # proceed to end code and destroy all windows
+# cv.waitKey(0)                                       # hold the created windows
+# cv.destroyAllWindows()                              # proceed to end code and destroy all windows
 
 # Note: In the case of a color images, the decoded images will have the channels stored in B G R order.
 #       use Mac terminal to show information (especially depth): sips -g all image.png
